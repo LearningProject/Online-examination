@@ -14,6 +14,10 @@ app.controller("formCtrl", ['$scope', function($scope) {
         $scope.reset=function(){
             $scope.pwd="";
             $scope.email="";
+            $scope.myForm.$setPristine();
+    $scope.myForm.$setValidity();
+    $scope.myForm.$setUntouched();
+    $scope.myForm.$setDirty();
         }
 }]);
     </script>
@@ -38,14 +42,19 @@ app.controller("formCtrl", ['$scope', function($scope) {
                 <span class="red-text" ng-show="myForm.pwd.$error.required && myForm.pwd.$dirty">Password is a required field</span>
               </div>
               <br/>
-            <div class="form-group"> 
+       <!--     <div class="form-group"> 
               <label><input type="checkbox" checked="checked" name="remember"> Remember me
                  <span class="psw" style="padding-left:20px">Forgot <a href="#">password?</a></span>
               </label>
-            </div>
+            </div>-->
            <div style="padding-top:5%" class="form-group"> 
-               <button type="submit"  ng-click="reset()" style=" float:right;font-size: 15px ;padding:4px 10px;background-color:#008CBA;">Login</button>
-            </div> 
+               <button   ng-click="reset()" style=" float:right;font-size: 15px ;padding:4px 10px;background-color:#008CBA;">Login</button>
+            </div> <br/><br/>
+            <div class="form-group"> 
+                <label>
+                   <span class="psw" style="padding-left:20px"> <a href="#">Register new user</a></span>
+                </label>
+              </div>
         </form>
         {{user}}
     </div>
