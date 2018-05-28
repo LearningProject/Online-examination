@@ -46,17 +46,18 @@ app.controller("formCtrl", ['$scope', function($scope) {
               <label><input type="checkbox" checked="checked" name="remember"> Remember me
                  <span class="psw" style="padding-left:20px">Forgot <a href="#">password?</a></span>
               </label>
-            </div>-->
-           <div style="padding-top:5%" class="form-group"> 
-               <button   ng-click="reset()" style=" float:right;font-size: 15px ;padding:4px 10px;background-color:#008CBA;">Login</button>
-            </div> <br/><br/>
-            <div class="form-group"> 
+            </div>
+          style=" float:right;font-size: 15px ;padding:4px 10px;background-color:#008CBA;"-->
+           <div style="padding-top:4%" class="form-group"> 
+               <button style="padding:0 99px"  ng-click="reset()" >Login</button>
+            </div> <br/>
+            <div style="padding-top:8%"> 
                 <label>
-                   <span class="psw" style="padding-left:20px"> <a href="#">Register new user</a></span>
+                   <span class="psw" style="padding-left:20px">No account? <a href="#">Create One!</a></span>
                 </label>
               </div>
         </form>
-        {{user}}
+       
     </div>
 </body>
 </html>
