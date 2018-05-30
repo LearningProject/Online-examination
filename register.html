@@ -1,0 +1,30 @@
+<form id="formcss" name="registerForm" >
+    <div id="loginIcon">User Register</div>
+      <div class="form-group">
+        <label for="uname" style="padding:0px 15px 0 0" ><b>Email</b></label>
+          <input  name="email" ng-model="email" id="eml" type="text" ng-pattern="email_id" ng-required="true" autocomplete="off" placeholder="Email" class="form-control" >
+       
+        <span class="red-text" ng-if="registerForm.email.$error.required && registerForm.email.$dirty">Email is a required field</span>
+        <span class="red-text" ng-show="registerForm.email.$error.pattern">Invalid Email</span>
+      </div>
+      <br/>
+      <div class="form-group">
+          <label for="uname" style="padding:0px 15px 0 0"><b>Password </b> </label>
+            <input name="pwd"ng-model="thePwd" id="pwd" type="text" ng-required="true" autocomplete="off" placeholder="Password" class="form-control" >
+        
+          <span class="red-text" ng-show="registerForm.pwd.$error.required && registerForm.pwd.$dirty">Password is a required field</span>
+        </div>
+        <br/>
+        <div class="form-group">
+            <label for="uname" style="padding:0px 15px 0 0"><b> Confirm Password </b> </label>
+              <input name="pwd" ng-model="chkPwd" id="pwd" type="text" ng-required="true" autocomplete="off" wj-validation-error="chkPwd != thePwd ? 'Passwords don\'t match' : ''"  placeholder="Password" class="form-control" >
+          
+            <span class="red-text" ng-show="registerForm.pwd.$error.required && registerForm.pwd.$dirty">Password is a required field</span>
+          </div>
+          <br/>
+          <div style="padding-top:4%" class="form-group"> 
+           
+         </div>
+ 
+    
+  </form>

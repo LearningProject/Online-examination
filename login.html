@@ -1,0 +1,32 @@
+<form id="formcss" name="myForm" >
+        <div id="loginIcon">Member Login</div>
+          <div class="form-group">
+            <label for="uname" style="padding:0px 15px 0 0"><b>Username </b></label>
+              <input name="email" ng-model="email" id="eml" type="text" ng-pattern="email_id" ng-required="true" autocomplete="off" placeholder="Email" class="form-control" >
+           
+            <span class="red-text" ng-if="myForm.email.$error.required && myForm.email.$dirty">Email is a required field</span>
+            <span class="red-text" ng-show="myForm.email.$error.pattern">Invalid Email</span>
+          </div>
+          <br/>
+          <div class="form-group">
+              <label for="uname" style="padding:0px 15px 0 0"><b>Password </b> </label>
+                <input name="pwd" ng-model="pwd" id="pwd" type="text" ng-required="true" autocomplete="off" placeholder="Password" class="form-control" >
+            
+              <span class="red-text" ng-show="myForm.pwd.$error.required && myForm.pwd.$dirty">Password is a required field</span>
+            </div>
+            <br/>
+     <!--     <div class="form-group"> 
+            <label><input type="checkbox" checked="checked" name="remember"> Remember me
+               <span class="psw" style="padding-left:20px">Forgot <a href="#">password?</a></span>
+            </label>
+          </div>
+        style=" float:right;font-size: 15px ;padding:4px 10px;background-color:#008CBA;"-->
+         <div style="padding-top:4%" class="form-group"> 
+             <button style="padding:0 99px"  ng-click="reset()" >Login</button>
+          </div> <br/>
+          <div style="padding-top:8%"> 
+              <label>
+                 <span class="psw" style="padding-left:20px">No account? <a href="#!/register">Create One!</a></span>
+              </label>
+            </div>
+      </form>

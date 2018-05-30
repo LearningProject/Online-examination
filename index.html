@@ -4,59 +4,83 @@
 <meta charset="UTF-8">
 <title>Online Examination</title>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script> 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.18/angular-ui-router.min.js"></script>
+
 <link rel="stylesheet" type="text/css" href="style.css">
+
 <script>
-   var app = angular.module("myApp", []);
+  
+   var app = angular.module("myApp",  ['ui.router']);
+ 
+   app.config(function($stateProvider, $urlRouterProvider,$locationProvider) {
+    
+    $urlRouterProvider.otherwise('/');
+
+   
+    $stateProvider
+        
+        // HOME STATES AND NESTED VIEWS ========================================
+        .state('home', {
+            url: '/',
+            templateUrl: 'login.html',
+            controller:'formCtrl' 
+        })
+        .state('register', {
+            url: '/register',
+           templateUrl: 'register.html',
+           controller:"registerController"
+                
+        });
+        
+        //$locationProvider.html5Mode(true); //activate HTML5 Mode
+          /*
+        // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
+        .state('register', {
+            url: '/register',
+           templateUrl: 'registert.html' ,
+           controller:'formCtrl'       
+        });*/
+     //  $locationProvider.html5Mode(true);
+     //  $locationProvider.html5Mode(false);
+        
+});
 app.controller("formCtrl", ['$scope', function($scope) {
-        $scope.pwd = " ";
+        $scope.thePwd = " ";
         $scope.email_id = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
         $scope.email="";
+        $scope.chkPwd="";
         $scope.reset=function(){
-            $scope.pwd="";
-            $scope.email="";
-            $scope.myForm.$setPristine();
-    $scope.myForm.$setValidity();
-    $scope.myForm.$setUntouched();
-    $scope.myForm.$setDirty();
-        }
+        $scope.myForm.$setPristine();
+        $scope.myForm.$setValidity();
+        $scope.myForm.$setUntouched();
+        $scope.myForm.$setDirty();}
+           
+          
 }]);
+app.controller("registerCtrl", ['$scope', function($scope) {
+    $scope.pwd = " ";
+    $scope.email_id = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    $scope.email="";
+    $scope.reset=function(){
+        $scope.pwd="";
+        $scope.email="";
+        $scope.myForm.$setPristine();
+$scope.myForm.$setValidity();
+$scope.myForm.$setUntouched();
+$scope.myForm.$setDirty();
+    }
+}]);
+
     </script>
 </head>
 
-<body id="main">
-    <div ng-app="myApp" ng-controller="formCtrl" >
-        <form id="formcss" name="myForm" >
-          <div id="loginIcon">Member Login</div>
-            <div class="form-group">
-              <label for="uname" style="padding:0px 15px 0 0"><b>Username </b></label>
-                <input name="email" ng-model="email" id="eml" type="text" ng-pattern="email_id" ng-required="true" autocomplete="off" placeholder="Email" class="form-control" >
-             
-              <span class="red-text" ng-if="myForm.email.$error.required && myForm.email.$dirty">Email is a required field</span>
-              <span class="red-text" ng-show="myForm.email.$error.pattern">Invalid Email</span>
-            </div>
-            <br/>
-            <div class="form-group">
-                <label for="uname" style="padding:0px 15px 0 0"><b>Password </b> </label>
-                  <input name="pwd" ng-model="pwd" id="pwd" type="text" ng-required="true" autocomplete="off" placeholder="Password" class="form-control" >
-              
-                <span class="red-text" ng-show="myForm.pwd.$error.required && myForm.pwd.$dirty">Password is a required field</span>
-              </div>
-              <br/>
-       <!--     <div class="form-group"> 
-              <label><input type="checkbox" checked="checked" name="remember"> Remember me
-                 <span class="psw" style="padding-left:20px">Forgot <a href="#">password?</a></span>
-              </label>
-            </div>
-          style=" float:right;font-size: 15px ;padding:4px 10px;background-color:#008CBA;"-->
-           <div style="padding-top:4%" class="form-group"> 
-               <button style="padding:0 99px"  ng-click="reset()" >Login</button>
-            </div> <br/>
-            <div style="padding-top:8%"> 
-                <label>
-                   <span class="psw" style="padding-left:20px">No account? <a href="#">Create One!</a></span>
-                </label>
-              </div>
-        </form>
+<body id="main"  ng-app="myApp" ng-controller="formCtrl">
+    <div class="container">
+      <!--<hidden> <a ui-sref="#!home">Home</a></hidden>
+        THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+        <div ui-view></div>
+       
        
     </div>
 </body>
